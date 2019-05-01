@@ -11,12 +11,12 @@ const con = mysql.createConnection({
 con.connect((err) => {
   if (err) throw err;
   console.log('Connected to mysql server');
-  
-  let sql = "DELETE FROM customers WHERE address = 'Sideway 1633'";
+
+  let sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'";
   
   con.query(sql, (err, res, fields) => {
     if (err) throw err;
     // console.log(res);
-    console.log("Number of records deleted: " + res.affectedRows);
+    console.log("Number of records updated: " + res.affectedRows);
   });
 });
