@@ -12,12 +12,9 @@ con.connect((err) => {
   if (err) throw err;
   console.log('Connected to mysql server');
 
-  // let sql = "SELECT * FROM customers LIMIT 5";
-  // let sql = "SELECT * FROM customers LIMIT 5 OFFSET 2";
-  let sql = "SELECT * FROM customers LIMIT 2, 5"; // shorter syntax
-  
-  con.query(sql, (err, res, fields) => {
+  let sql = "SELECT users.name AS user, products.name AS favorite FROM users JOIN products ON users.favorite_product = products.id";
+  con.query(sql, function (err, result) {
     if (err) throw err;
-    console.log(res);
+    console.log(result);
   });
 });
