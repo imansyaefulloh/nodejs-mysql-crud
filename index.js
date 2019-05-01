@@ -12,9 +12,9 @@ con.connect((err) => {
   if (err) throw err;
   console.log('Connected to mysql server');
 
-  let sql = "SELECT users.name AS user, products.name AS favorite FROM users JOIN products ON users.favorite_product = products.id";
+  let sql = "DROP TABLE customers";
   con.query(sql, function (err, result) {
     if (err) throw err;
-    console.log(result);
+    console.log("Table deleted");
   });
 });
