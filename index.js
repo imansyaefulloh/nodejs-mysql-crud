@@ -11,8 +11,8 @@ const con = mysql.createConnection({
 con.connect((err) => {
   if (err) throw err;
   console.log('Connected to mysql server');
-  // let sql = "SELECT * FROM customers WHERE address = 'Sideway 1633'";
-  let sql = "SELECT * FROM customers WHERE address LIKE 'S%'"; // using wildcard
+  let address = 'Mountain 21';
+  let sql = "SELECT * FROM customers WHERE address = " + mysql.escape(address);
   con.query(sql, (err, res, fields) => {
     if (err) throw err;
     console.log(res);
