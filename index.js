@@ -12,11 +12,12 @@ con.connect((err) => {
   if (err) throw err;
   console.log('Connected to mysql server');
 
-  let sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'";
+  // let sql = "SELECT * FROM customers LIMIT 5";
+  // let sql = "SELECT * FROM customers LIMIT 5 OFFSET 2";
+  let sql = "SELECT * FROM customers LIMIT 2, 5"; // shorter syntax
   
   con.query(sql, (err, res, fields) => {
     if (err) throw err;
-    // console.log(res);
-    console.log("Number of records updated: " + res.affectedRows);
+    console.log(res);
   });
 });
