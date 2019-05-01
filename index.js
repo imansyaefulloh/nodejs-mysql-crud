@@ -11,11 +11,12 @@ const con = mysql.createConnection({
 con.connect((err) => {
   if (err) throw err;
   console.log('Connected to mysql server');
-  // let sql = "SELECT * FROM customers ORDER BY name";
-  let sql = "SELECT * FROM customers ORDER BY name DESC";
+  
+  let sql = "DELETE FROM customers WHERE address = 'Sideway 1633'";
   
   con.query(sql, (err, res, fields) => {
     if (err) throw err;
-    console.log(res);
+    // console.log(res);
+    console.log("Number of records deleted: " + res.affectedRows);
   });
 });
