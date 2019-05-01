@@ -11,11 +11,10 @@ const con = mysql.createConnection({
 con.connect((err) => {
   if (err) throw err;
   console.log('Connected to mysql server');
-  // let sql = "SELECT * FROM customers"; // select all columns
-  let sql = "SELECT name, address FROM customers"; // select some columns
+  // let sql = "SELECT * FROM customers WHERE address = 'Sideway 1633'";
+  let sql = "SELECT * FROM customers WHERE address LIKE 'S%'"; // using wildcard
   con.query(sql, (err, res, fields) => {
     if (err) throw err;
     console.log(res);
-    console.log(res[0]);
   });
 });
